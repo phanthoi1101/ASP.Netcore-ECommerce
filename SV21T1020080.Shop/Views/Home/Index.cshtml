@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-2">
+            <h3 class="nav-title">Tìm kiếm bằng Catelory</h3>
+            <div class="nav-container">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#home">BS HOME</a></li>
+                    <li><a href="#get-started">BS Get Started</a></li>
+                    <li><a href="#grid">BS Grid Basic</a></li>
+                    <li><a href="#typography">BS Typography</a></li>
+                    <li class="active"><a href="#tables">BS Tables</a></li>
+                    <li><a href="#images">BS Images</a></li>
+                    <li><a href="#jumbotron">BS Jumbotron</a></li>
+                    <li><a href="#wells">BS Wells</a></li>
+                    <li><a href="#alerts">BS Alerts</a></li>
+                    <li><a href="#buttons">BS Buttons</a></li>
+                    <li><a href="#button-groups">BS Button Groups</a></li>
+                    <li><a href="#glyphicons">BS Glyphicons</a></li>
+                    <li><a href="#badges">BS Badges/Labels</a></li>
+                    <li><a href="#progress">BS Progress Bars</a></li>
+                    <li><a href="#pagination">BS Pagination</a></li>
+                    <li><a href="#pager">BS Pager</a></li>
+                    <li><a href="#list-groups">BS List Groups</a></li>
+                    <li><a href="#panels">BS Panels</a></li>
+                    <li><a href="#dropdowns">BS Dropdowns</a></li>
+                    <li><a href="#collapse">BS Collapse</a></li>
+                    <li><a href="#tabs">BS Tabs/Pills</a></li>
+                    <li><a href="#navbar">BS Navbar</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h3>Danh sách các mặt hàng</h3>
+             <div class="content">
+                <div class="row" id="searchResult">
+                    
+                </div>
+            </div> 
+        </div>
+        <div class="col-md-2">Hiển thị thanh tìm kiếm</div>
+    </div>
+</div>
+ @section scripts {
+    <script>
+        function doSearch(page) {
+            var searchCondition = $("#frmSearchInput").serializeArray();
+            searchCondition.push({ name: "page", value: page });
+
+            var action = $("#frmSearchInput").prop("action");
+            var method = $("#frmSearchInput").prop("method");
+
+            $.ajax({
+                url: action,
+                type: method,
+                data: searchCondition,
+                success: function (data) {
+                    $("#searchResult").html(data);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            doSearch(@Model.Page);
+            $("#frmSearchInput").submit(function (e) {
+                e.preventDefault();
+                doSearch(1);
+            });
+        });
+    </script>
+} 

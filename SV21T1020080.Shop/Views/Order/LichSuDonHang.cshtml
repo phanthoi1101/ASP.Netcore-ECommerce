@@ -1,0 +1,110 @@
+﻿@model IEnumerable<OrderHistory>
+@{
+    ViewBag.title = "Lịch sử đơn hàng";
+}
+<div class="container">
+    <div class="text-center" style="margin-bottom: 50px;">
+        <h2>Lịch sử đơn hàng</h2>
+    </div>
+    <div class="text-center" style="margin-bottom: 50px;">
+        <ul class="nav nav-tabs">
+            <li class="@(ViewBag.ActiveStatus==1? "active":"")"><a href="~/Order/LichSuDonHang/1">Đơn hàng vừa tạo</a></li>
+            <li class="@(ViewBag.ActiveStatus==2? "active":"")"><a href="~/Order/LichSuDonHang/2">Đơn hàng đã duyệt</a></li>
+            <li class="@(ViewBag.ActiveStatus==3? "active":"")"><a href="~/Order/LichSuDonHang/3">Đơn hàng đang được giao</a></li>
+            <li class="@(ViewBag.ActiveStatus==4? "active":"")"><a href="~/Order/LichSuDonHang/4">Đơn hàng đã hoàn thành</a></li>
+            <li class="@(ViewBag.ActiveStatus==-2? "active":"")"><a href="~/Order/LichSuDonHang/-2">Đơn hàng từ chối</a></li>
+            <li class="@(ViewBag.ActiveStatus==-1? "active":"")"><a href="~/Order/LichSuDonHang/-1">Đơn hàng bị huỷ</a></li>
+        </ul>
+    </div>
+
+    @if (Model.Count() != 0)
+    {
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Ảnh</th>
+                <th>Tên hàng</th>
+                <th>Đơn vị tính</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Thành tiền</th>
+                <th>Ngày hoàn Thành</th>
+            </tr>
+        </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><img src="~/images/@item.Photo" style="width:50px;height:50px;" /></td>
+                        <td>@item.ProductName</td>
+                        <td>@item.Unit</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Price.ToString("N0")</td>
+                        <td>@item.Total.ToString("N0")</td>
+
+                        @if (item.Status == Constants.ORDER_INIT)
+                        {
+                            <td>
+                                @string.Format(new System.Globalization.CultureInfo("en-GB"),
+                                                  "{0:dd/MM/yyyy HH:mm}",
+                                                  @item.OrderTime)
+                            </td>
+                        }
+                        @if (item.Status == Constants.ORDER_ACCRPTED)
+                        {
+                            <td>
+                                @string.Format(new System.Globalization.CultureInfo("en-GB"),
+                                                  "{0:dd/MM/yyyy HH:mm}",
+                                                  @item.AcceptTime)
+                            </td>
+                        }
+                        @if (item.Status == Constants.ORDER_SHIPPING)
+                        {
+                            <td>
+                                @string.Format(new System.Globalization.CultureInfo("en-GB"),
+                                                  "{0:dd/MM/yyyy HH:mm}",
+                                                  @item.ShippedTime)
+                            </td>
+                        }
+                        @if (item.Status == Constants.ORDER_FINISHED)
+                        {
+                            <td>
+                                @string.Format(new System.Globalization.CultureInfo("en-GB"),
+                                                  "{0:dd/MM/yyyy HH:mm}",
+                                                  @item.FinishedTime)
+                            </td>
+                        }
+                        @if (item.Status == Constants.ORDER_REJECTED)
+                        {
+                            <td>
+                                @string.Format(new System.Globalization.CultureInfo("en-GB"),
+                                                  "{0:dd/MM/yyyy HH:mm}",
+                                                  @item.FinishedTime)
+                            </td>
+                        }
+                        @if (item.Status == Constants.ORDER_CANCEL)
+                        {
+                            <td>
+                                @string.Format(new System.Globalization.CultureInfo("en-GB"),
+                                                  "{0:dd/MM/yyyy HH:mm}",
+                                                  @item.FinishedTime)
+                            </td>
+                        }
+                    </tr>
+
+                }
+            </tbody>
+    </table>
+        }
+        else
+        {
+        <div class="text-center">
+            <h3 class="text-danger" style="font-size:20px">Không có đơn hàng nào!</h3>
+        </div>
+        }
+</div>
+
+
+<!-- Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

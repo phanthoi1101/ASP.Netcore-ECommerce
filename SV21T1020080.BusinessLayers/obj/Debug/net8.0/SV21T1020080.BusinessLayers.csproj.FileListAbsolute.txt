@@ -1,0 +1,17 @@
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\bin\Debug\net8.0\SV21T1020080.BusinessLayers.deps.json
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\bin\Debug\net8.0\SV21T1020080.BusinessLayers.dll
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\bin\Debug\net8.0\SV21T1020080.BusinessLayers.pdb
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\obj\Debug\net8.0\SV21T1020080.BusinessLayers.GeneratedMSBuildEditorConfig.editorconfig
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\obj\Debug\net8.0\SV21T1020080.BusinessLayers.AssemblyInfoInputs.cache
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\obj\Debug\net8.0\SV21T1020080.BusinessLayers.AssemblyInfo.cs
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\obj\Debug\net8.0\SV21T1020080.BusinessLayers.csproj.CoreCompileInputs.cache
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\obj\Debug\net8.0\SV21T1020080.BusinessLayers.dll
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\obj\Debug\net8.0\refint\SV21T1020080.BusinessLayers.dll
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\obj\Debug\net8.0\SV21T1020080.BusinessLayers.pdb
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\obj\Debug\net8.0\ref\SV21T1020080.BusinessLayers.dll
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\bin\Debug\net8.0\SV21T1020080.DataLayers.dll
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\bin\Debug\net8.0\SV21T1020080.DomainModels.dll
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\bin\Debug\net8.0\SV21T1020080.DataLayers.pdb
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\bin\Debug\net8.0\SV21T1020080.DomainModels.pdb
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\obj\Debug\net8.0\SV21T1020080.BusinessLayers.csproj.AssemblyReference.cache
+D:\CODE\LapTrinhWeb\SV21T1020080\SV21T1020080.BusinessLayers\obj\Debug\net8.0\SV21T102.264205BE.Up2Date

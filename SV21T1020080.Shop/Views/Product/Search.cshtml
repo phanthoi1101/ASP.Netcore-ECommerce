@@ -1,0 +1,59 @@
+﻿@model SV21T1020080.Shop.Models.ProductSearchResult
+@{
+    Layout = null;
+}
+<p style="margin:10px 0 10px 0">Có <b>@Model.RowCount</b> mặt hàng trong tổng số <b>@Model.PageCount</b> trang</p>
+<div class="row">
+    @if(Model.RowCount == 0)
+    {
+        <div class="text-center">
+            <h3 class="text-danger" style="font-size:20px">Không có sản phẩm nào!</h3>
+        </div>
+    }
+    else
+    {
+        @foreach (var item in Model.Data)
+        {
+            <a href="~/Product/ViewProductDetail/@item.ProductID">
+                <div class="col-md-2">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="~/images/@item.Photo" alt="">
+                        </div>
+                        <div class="flash-sale">
+                            <i class="fa fa-bolt"></i> Rẻ Vô Địch
+                        </div>
+                        <h3 style="height:50px" class="product-title">@item.ProductName</h3>
+                        <div class="price-section">
+                            <span class="current-price">₫@item.Price.ToString("N0")</span>
+                        </div>
+                        <div class="location" style="height:30px">
+                            @foreach (var suplier in SV21T1020080.BusinessLayers.CommonDataService.ListOfSupliers(out int rowCount, 0, 0, ""))
+                            {
+                                if (suplier.SupplierID == item.SupplierID)
+                                {
+                                    <p>@suplier.SupplierName</p>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+    }
+</div>
+<nav aria-label="Page navigation example" class=" text-center">
+        <ul class="pagination justify-content-center">
+            @for (int p = 1; p <= Model.PageCount; p++)
+            {
+                if (p == Model.Page)
+                {
+                    <li class="active"><a href="#">@p</a></li>
+                }
+                else
+                {
+                    <li><a href="javascript:;" onclick="doSearch(@p)">@p</a></li>
+                }
+            }
+        </ul>
+</nav>

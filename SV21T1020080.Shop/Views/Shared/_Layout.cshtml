@@ -1,0 +1,452 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PCT SHOP - @ViewBag.Title</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="~/themes/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/themes/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/themes/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/themes/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="~/themes/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="~/themes/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="~/themes/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="~/themes/bower_components/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        /*Css show các ảnh cảu mặt hàng*/
+        /* Custom CSS for the product image */
+        .product-image { 
+            width: 100%; 
+            height: auto;
+        }
+
+        .thumbnail { 
+      cursor: pointer; 
+    margin-top: 10px; 
+ }
+
+        .text-danger {
+            color: red;
+            font-size: 0.9rem;
+        }
+     .active-thumbnail {
+       border: 2px solid red; 
+        } 
+       /*  Dóng css */
+        /* Thanh scolbar*/
+        .nav-container {
+            max-height: 600px; /* Giới hạn chiều cao vùng menu */
+            overflow-y: auto; /* Thanh cuộn dọc xuất hiện nếu nội dung quá dài */
+            border: 1px solid #ddd; /* Thêm viền để dễ nhìn thấy vùng chứa */
+            padding-right: 5px; /* Để tránh thanh cuộn đè lên nội dung */
+        }
+        .nav-title {
+            padding: 15px;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .nav-pills > li > a {
+            border-radius: 0; /* Không bo tròn các nút menu */
+        }
+        .nav-pills > li.active > a {
+            background-color: deepskyblue; /* Đổi màu nền của mục đang active */
+        }
+        /*Đóng*/
+        .select2-container .select2-selection--single {
+            height: 34px;
+            padding: 6px 12px;
+        }
+
+        .selected {
+            background-color: deepskyblue ;/* Màu nền khi chọn */
+            color: #000; /* Màu chữ khi chọn */
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 26px;
+        }
+
+        .select2-container .select2-selection--single .select2-selection__arrow {
+            height: 34px;
+            top: 1px;
+        }
+
+        .field-validation-error {
+            color: #f00;
+        }
+
+        .number-separator {
+            text-align: left !important;
+        }
+
+        /*Css cho card*/
+        .product-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+            .product-card:hover {
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+            .product-image img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+        .product-title {
+            font-size: 14px;
+            color: #333;
+            margin: 8px 0;
+            height: 40px;
+            overflow: hidden;
+            line-height: 1.4;
+        }
+
+        .price {
+            color: #ff4d4f;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .price-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .current-price {
+            color: #ff424e;
+            font-size: 16px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .discount-badge {
+            background: #ff424e;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 2px;
+            font-size: 12px;
+        }
+
+        .flash-sale {
+            background: #ffeee8;
+            color: #ff424e;
+            padding: 4px 8px;
+            border-radius: 2px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .rating {
+            color: #ffd700;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+
+        .location {
+            color: #888;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+            .location i {
+                margin-right: 4px;
+            }
+            /*Đóng css*/
+
+            /*Css Detail*/
+        .product-gallery {
+            margin-bottom: 20px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .thumbnail-slider {
+            position: relative;
+            padding: 0 25px;
+        }
+
+        .thumbnails {
+            display: flex;
+            overflow-x: hidden;
+            gap: 10px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border: 2px solid #ddd;
+            padding: 2px;
+            cursor: pointer;
+            margin: 0;
+        }
+
+            .thumbnail.active {
+                border-color: #ff4d4f;
+            }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 20px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .nav-prev {
+            left: 0;
+        }
+
+        .nav-next {
+            right: 0;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .product-price {
+            color: #ff4d4f;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .product-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .quantity-label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .quantity-input {
+            width: 120px;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-add-cart {
+            color: #ff4d4f;
+            background: #fff;
+            border: 1px solid #ff4d4f;
+        }
+
+            .btn-add-cart:hover {
+                background: #fff1f0;
+                color: #ff4d4f;
+            }
+
+        .btn-buy-now {
+            background: #ff4d4f;
+            color: #fff;
+            border: none;
+        }
+
+            .btn-buy-now:hover {
+                background: #ff7875;
+                color: #fff;
+            }
+
+        .btn-outline-danger {
+            background-color: transparent;
+            color: #d9534f; /* Màu của Bootstrap danger */
+            border: 1px solid #d9534f; /* Viền danger */
+        }
+
+            .btn-outline-danger:hover {
+                background-color: #d9534f; /* Màu nền khi hover */
+                color: #fff; /* Màu chữ khi hover */
+            }
+
+        .flex-grow-1 {
+            width: 100%; /* Chiếm toàn bộ chiều ngang */
+        }
+        /*Css mô tả thuộc tính*/
+        .product-details {
+            padding: 20px;
+            background: #fff;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .specs-table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+            .specs-table tr {
+                border-bottom: 1px solid #f5f5f5;
+            }
+
+            .specs-table td {
+                padding: 12px 0;
+            }
+
+                .specs-table td:first-child {
+                    color: #757575;
+                    width: 140px;
+                }
+
+                .specs-table td:last-child {
+                    color: #333;
+                }
+        @@media (max-width: 768px) {
+            .specs-table td:first-child
+
+        {
+            width: 100px;
+        }
+
+        }
+        /* Đóng css mô tả thuộc tính*/
+    </style>
+
+    @RenderSection("styles", false)
+</head>
+<body class="hold-transition skin-blue">
+    <!-- Site wrapper -->
+    <div style="background-color: #ecf0f5">
+        @{
+            await Html.RenderPartialAsync("_Header");
+        }
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper"style="background-color:white;">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+            </section>
+
+            <!-- Main content -->
+            @*  <section class="content">
+                @RenderBody()
+            </section>  *@
+            <div style="width:100%; height:auto;">
+                <section class="content">
+                    @RenderBody()
+                </section>
+            </div>
+
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        @{
+            await Html.RenderPartialAsync("_Footer");
+            //await Html.RenderPartialAsync("_ControlSideBar");
+
+        }
+
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 3 -->
+    <script src="~/themes/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="~/themes/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="~/themes/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/themes/bower_components/fastclick/lib/fastclick.js"></script>
+
+    <script src="~/themes/bower_components/moment/min/moment.min.js"></script>
+    <script src="~/themes/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/themes/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+    <script src="~/themes/bower_components//select2/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/themes/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/themes/dist/js/demo.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.sidebar-menu').tree();
+            $('.date-picker').datepicker({
+                autoclose: true,
+                format: "dd/mm/yyyy"
+            });
+            $('.daterange-picker').daterangepicker({
+                locale: {
+                    format: 'DD/MM/YYYY'
+                }
+            });
+            $('.select2').select2();
+        })
+    </script>
+
+    <script>
+        // Đảm bảo mã JavaScript này được chạy sau khi trang được tải xong
+        $('.number-separator').inputmask({
+            alias: "numeric",
+            groupSeparator: ",",       // Dấu phẩy phân cách phần nghìn
+            autoGroup: true,           // Tự động thêm dấu phân cách
+            digits: 0,                 // Không có chữ số thập phân
+            removeMaskOnSubmit: true   // Loại bỏ ký tự phân cách phần nghìn khi submit form
+        });
+    </script>
+
+    @RenderSection("scripts", false)
+</body>
+</html>

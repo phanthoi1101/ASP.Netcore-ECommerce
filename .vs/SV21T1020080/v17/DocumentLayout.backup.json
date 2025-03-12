@@ -1,0 +1,79 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\CODE\\LapTrinhWeb\\SV21T1020080\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8D138943-E457-404F-B1B8-DE56F67D9FAE}|SV21T1020080.Shop\\SV21T1020080.Shop.csproj|d:\\code\\laptrinhweb\\sv21t1020080\\sv21t1020080.shop\\views\\account\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8D138943-E457-404F-B1B8-DE56F67D9FAE}|SV21T1020080.Shop\\SV21T1020080.Shop.csproj|solutionrelative:sv21t1020080.shop\\views\\account\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D138943-E457-404F-B1B8-DE56F67D9FAE}|SV21T1020080.Shop\\SV21T1020080.Shop.csproj|d:\\code\\laptrinhweb\\sv21t1020080\\sv21t1020080.shop\\views\\account\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8D138943-E457-404F-B1B8-DE56F67D9FAE}|SV21T1020080.Shop\\SV21T1020080.Shop.csproj|solutionrelative:sv21t1020080.shop\\views\\account\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D138943-E457-404F-B1B8-DE56F67D9FAE}|SV21T1020080.Shop\\SV21T1020080.Shop.csproj|d:\\code\\laptrinhweb\\sv21t1020080\\sv21t1020080.shop\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D138943-E457-404F-B1B8-DE56F67D9FAE}|SV21T1020080.Shop\\SV21T1020080.Shop.csproj|solutionrelative:sv21t1020080.shop\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\CODE\\LapTrinhWeb\\SV21T1020080\\SV21T1020080.Shop\\Views\\Account\\Create.cshtml",
+              "RelativeDocumentMoniker": "SV21T1020080.Shop\\Views\\Account\\Create.cshtml",
+              "ToolTip": "D:\\CODE\\LapTrinhWeb\\SV21T1020080\\SV21T1020080.Shop\\Views\\Account\\Create.cshtml",
+              "RelativeToolTip": "SV21T1020080.Shop\\Views\\Account\\Create.cshtml",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAEAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T14:30:31.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChangePassword.cshtml",
+              "DocumentMoniker": "D:\\CODE\\LapTrinhWeb\\SV21T1020080\\SV21T1020080.Shop\\Views\\Account\\ChangePassword.cshtml",
+              "RelativeDocumentMoniker": "SV21T1020080.Shop\\Views\\Account\\ChangePassword.cshtml",
+              "ToolTip": "D:\\CODE\\LapTrinhWeb\\SV21T1020080\\SV21T1020080.Shop\\Views\\Account\\ChangePassword.cshtml",
+              "RelativeToolTip": "SV21T1020080.Shop\\Views\\Account\\ChangePassword.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T14:30:31.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\CODE\\LapTrinhWeb\\SV21T1020080\\SV21T1020080.Shop\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "SV21T1020080.Shop\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\CODE\\LapTrinhWeb\\SV21T1020080\\SV21T1020080.Shop\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "SV21T1020080.Shop\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T07:32:39.203Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

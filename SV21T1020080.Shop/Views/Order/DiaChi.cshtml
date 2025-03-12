@@ -1,0 +1,68 @@
+﻿@model Customer
+@{
+    Layout = null;
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form action="~/Order/Init" method="post" class="form-horizontal" id="formDiaChi">
+            <input type="hidden" name="@nameof(Model.CustomerID)" value="@Model.CustomerID" />
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Chọn địa chỉ giao hàng</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Tỉnh thành:</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="deliveryProvince" id="tinhthanh">
+                            @foreach(var item in CommonDataService.ListOfProvince())
+                            {
+                                if (item.ProvinceName == Model.Province)
+                                {
+                                    <option selected value="@item.ProvinceName">@item.ProvinceName</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.ProvinceName">@item.ProvinceName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Địa chỉ:</label>
+                    <div class="col-sm-9">
+                        <input id="Address" type="text" class="form-control" name="deliveryAddress" value="@Model.Address" />
+                    </div>
+                </div>
+                <div class="text-center">
+                    <span id="formError" class="text-danger" style="display:none;font-size:18px">Vui lòng nhập đầy đủ địa chỉ giao hàng</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-floppy-o"></i> Xác nhận
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Bỏ qua
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+       document.querySelector("#formDiaChi").addEventListener("submit", function (e) {
+        var Province = document.querySelector("#tinhthanh").value.trim(); // Loại bỏ khoảng trắng thừa
+        var Address = document.querySelector("#Address").value.trim();    // Loại bỏ khoảng trắng thừa
+        var errorSpan = document.querySelector("#formError");
+
+        if (Province === "" || Address === "") { // Kiểm tra nếu rỗng
+            e.preventDefault(); // Ngăn form gửi đi
+            errorSpan.style.display = "block"; // Hiển thị thông báo lỗi
+            errorSpan.textContent = "Vui lòng nhập đầy đủ thông tin!";
+        } else {
+            errorSpan.style.display = "none"; // Ẩn thông báo lỗi nếu hợp lệ
+        }
+    });
+</script>

@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+@for (int i = 0; i < 10; i++)
+{
+    <div class="col-sm-4">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">hello</h3>
+                <div class="box-tools pull-right">
+                    <a class="btn btn-box-tool" href="~/Employee/Edit/">
+                        <i class="fa fa-edit text-primary"></i>
+                    </a>
+                    <a class="btn btn-box-tool" href="~/Employee/Delete/">
+                        <i class="fa fa-trash text-danger"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-sm-4">
+
+                        <img style="height: 140px; width: 150px;" class="profile-user-img img-responsive img-bordered" src="~/images/employees/nhanvien2.jpg">
+                    </div>
+                    <div class="col-sm-8">
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <i class="fa fa-birthday-cake"></i> haha
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-phone"></i>hehe
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-envelope"></i> chụ chụ
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,75 @@
+﻿<header class="main-header">
+    <!-- Logo -->
+    <a href="~/" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>A</b>LT</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>PCT</b>Shop</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!--TODO: Kiểm tra người dùng có đăng nhập hay chứa -->
+        <div class="navbar-custom-menu">
+            @*           <ul class="nav navbar-nav">
+                <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="" class="user-image" alt="User Image">
+                                <span class="hidden-xs">phan canh thoi</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="~/images/employees/" class="img-circle" alt="User Image">
+                                    <p>
+                                        Phan Cảnh Thôi
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="~/Account/ChangePassword" class="btn btn-default btn-flat">Đổi mật khẩu</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="~/Account/Logout" class="btn btn-default btn-flat">Đăng xuất</a>
+                                    </div>
+                                </li>
+                            </ul>
+                    </li>
+
+            </ul> *@
+            
+            @{
+                var user = User.GetUserData();
+                if (user != null)
+                {
+                    <ul class="nav navbar-nav">
+                        <li user user-menu><a href="~/Order/LichSuDonHang" class="login-button" style="font-size:18px;">Lịch sử đơn hàng</a></li>
+                    </ul>
+                }
+            }
+            <ul class="nav navbar-nav">
+                <li user user-menu><a href="~/Order" class="login-button" style="font-size:18px;"><i class="fa fa-shopping-cart"></i> Giỏ Hàng</a></li>
+            </ul>
+            @{
+                var userData = User.GetUserData();
+                if (userData != null)
+                {
+                    <ul class="nav navbar-nav">
+                        <li user user-menu><a href="~/Account/Profile/@userData.UserId" class="login-button" style="font-size:18px;">@userData.DisplayName</a></li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav">
+                        <li user user-menu><a href="~/Account/Create" class="login-button" style="font-size:18px;">Đăng ký</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li user user-menu><a href="~/Account/Login/@ViewBag.Action" class="login-button" style="font-size:18px;">Đăng nhập</a></li>
+                    </ul>
+                }
+            }
+            
+        </div>
+    </nav>
+</header>

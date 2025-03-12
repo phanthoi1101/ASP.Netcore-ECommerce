@@ -1,0 +1,132 @@
+﻿@model SV21T1020080.Shop.Models.ProductSearchInput
+@{
+    ViewData["Title"] = "Home Page";
+}  
+    <form id="frmSearchInput" action="~/Product/Search" method="get">
+    <div class="col-md-2">
+        <div class="text-center" style="margin-bottom:30px">
+            <h3>Chọn loại hàng</h3>
+        </div>
+        <div class="nav-container">
+            <ul class="nav nav-pills nav-stacked">
+                    <li>
+                        <a href="javascript:void(0);" class="category-link" style="font-size:18px">Tất cả hàng</a>
+                    </li>
+                @foreach(var item in SV21T1020080.BusinessLayers.CommonDataService.ListOfCategories(out int rowcount, 0, 0, ""))
+                {  
+                        <li>
+                        <a href="javascript:void(0);" class="category-link" style="font-size:18px" data-category-id="@item.CategoryID">@item.CategoryName</a>
+                        </li>
+                }              
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="box box-primary">
+            <div class="box-body">
+                    <input type="hidden" id="CategoryIDInput" name="@nameof(Model.CategoryID)" value="@Model.CategoryID" />
+                    <input type="hidden" name="@nameof(Model.PageSize)" value="@Model.PageSize" />
+                    <div class="from-control table-responsive">
+                        <table class="table">
+                            <thead class="mb-2">
+                                <tr>
+                                    <th>Loại hàng:</th>
+                                    <th>Giá từ:</th>
+                                    <th>Đến:</th>
+                                    <th>Tên hàng cần tìm:</th>
+                                </tr>
+                            </thead>
+                            <tbody class="mt-4" style="margin-top:40px">
+                                <tr>
+                                    <td>
+                                        <select class="form-control select2" style="width:300px" name="@nameof(Model.SupplierID)">
+                                            <option selected>~Chọn nhà cung cấp~</option>
+                                            @foreach (var item in SV21T1020080.BusinessLayers.CommonDataService.ListOfSupliers(out int rowcount, 0, 0, ""))
+                                            {
+                                                <option value="@item.SupplierID">@item.SupplierName</option>
+
+                                                <h1>@item.SupplierID @Model.SupplierID</h1>
+                                            }                                     
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input class="form-control number-separator" style="width:100px;" placeholder="25,000" name="@nameof(Model.MinPrice)" value="@Model.MinPrice" />
+                                    </td>
+                                    <td>
+                                        <input class="form-control number-separator" style="width:100px;" placeholder="40,000" name="@nameof(Model.MaxPrice)" value="@Model.MaxPrice" />
+                                    </td>
+                                    <td>
+                                        <div class="input-group">
+                                            <input class="form-control" placeholder="nhập mặt hàng cần tìm" name="@nameof(Model.SearchValue)" value="@Model.SearchValue" />
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-info"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                <div class="text-center table">
+                    <h3 class="mt-0">Danh Sách Các Mặt Hàng</h3>
+                </div>
+                <div id="searchResult">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+ @section scripts {
+    <script>
+        
+
+        function doSearch(page) {
+            var searchCondition = $("#frmSearchInput").serializeArray();// Lấy tất cả dữ liệu trong form
+            searchCondition.push({ name: "page", value: page });// Thêm tham số trang
+            var action = $("#frmSearchInput").prop("action");
+            var method = $("#frmSearchInput").prop("method");
+
+            $.ajax({
+                url: action,
+                type: method,
+                data: searchCondition,
+                success: function (data) {
+                    $("#searchResult").html(data);//Cập nhật nội dung kết quả
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            doSearch(@Model.Page);
+            $("#frmSearchInput").submit(function (e) {
+                e.preventDefault();
+                doSearch(1);
+            });
+        });
+
+
+            //Sử lý category
+            // Script xử lý sự kiện khi nhấn vào thẻ a
+        document.addEventListener("DOMContentLoaded", function () {
+            const categoryLinks = document.querySelectorAll(".category-link");
+            categoryLinks.forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    // Lấy categoryId từ thuộc tính data-category-id
+                    const categoryId = this.getAttribute("data-category-id");
+                    // Gán giá trị categoryId vào input ẩn để cập nhật Model.CategoryID
+                    const modelCategoryInput = document.querySelector("#CategoryIDInput");
+                    if (modelCategoryInput) {
+                        modelCategoryInput.value = categoryId;
+                    }
+                    // Gửi yêu cầu tìm kiếm dựa trên categoryId
+                    doSearch(1);// Trang đầu tiên (page = 1)
+                });
+            });
+        });
+
+
+     
+    </script>
+}  

@@ -1,0 +1,65 @@
+﻿@model SV21T1020080.Web.Models.ProductSearchResult
+@{
+    Layout = null;
+}
+<form>
+    <p style="margin-top:10px">
+        Có <strong>@Model.RowCount</strong> mặt hàng trong tổng số <strong>@Model.PageCount</strong> trang.
+    </p>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr class="bg-primary text-white">
+                    <th>Ảnh</th>
+                    <th>Tên mặc hàng</th>
+                    <th>Đơn vị tính</th>
+                    <th>Giá</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Data)
+                {
+                    <tr>
+                        <td class="col-sm-1">
+                            <div style="width:60px; height:60px;">
+                                @if (string.IsNullOrWhiteSpace(item.Photo))
+                                {
+                                    <img style="height: 60px; width: 60px;" class="profile-user-img img-responsive img-bordered" src="~/images/products/raincoat.jpg">
+                                }
+                                else
+                                {
+                                    <img style="height: 60px; width: 60px;" class="profile-user-img img-responsive img-bordered" src="~/images/products/@item.Photo">
+                                }
+                            </div>
+                        </td>
+                        <td>@item.ProductName</td>
+                        <td>@item.Unit</td>
+                        <td>@String.Format("{0:N0}",item.Price)</td>
+                        <td>
+                            <div class="text-right">
+                                <a href="~/Product/Edit/@item.ProductID" class="btn btn-xs btn-info"><i class="fa fa-edit"></i></a>
+                                <a href="~/Product/Delete/@item.ProductID" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <nav aria-label="Page navigation example" class=" text-center">
+        <ul class="pagination justify-content-center">
+            @for (int p = 1; p <= Model.PageCount; p++)
+            {
+                if (p == Model.Page)
+                {
+                    <li class="active"><a href="">@p</a></li>
+                }
+                else
+                {
+                    <li><a href="javascript:;" onclick="doSearch(@p)">@p</a></li>
+                }
+            }
+        </ul>
+    </nav>
+</form>

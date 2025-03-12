@@ -1,0 +1,68 @@
+﻿@model Customer
+@{
+    ViewBag.tile = "Profile";
+}
+<div class="container">
+    <div class="text-center">
+        <h2>Xin chào @Model.CustomerName</h2>
+    </div>
+    @if (ViewBag.data != null)
+    {
+        <div class="alert alert-success">
+            @(ViewBag.data)
+        </div>
+    }
+    <form id="updateProfileForm" action="~/Account/UpdateProfile" method="post">
+        <input type="hidden" name="@nameof(Model.CustomerID)" value="@Model.CustomerID" />
+        <div class="form-group">
+            <label for="email">Tên khách hàng:</label>
+            <input  class="form-control"   name="@nameof(Model.CustomerName)" value="@Model.CustomerName">
+            @Html.ValidationMessage(nameof(Model.CustomerName))
+        </div>
+        <div class="form-group">
+            <label for="pwd">Tên liên hệ:</label>
+            <input  class="form-control"   name="@nameof(Model.ContactName)" value="@Model.ContactName">
+            @Html.ValidationMessage(nameof(Model.ContactName))
+        </div>
+        <div class="form-group">
+            <label for="pwd">Tỉnh thành:</label>
+            <select class="form-control" name="@nameof(Model.Province)">
+                @foreach(var item in CommonDataService.ListOfProvince())
+                {
+                    if (item.ProvinceName == Model.Province)
+                    {
+                        <option value="@item.ProvinceName" selected>@item.ProvinceName</option>
+                    }
+                    else
+                    {
+                        <option value="@item.ProvinceName">@item.ProvinceName</option>
+                    }
+                }
+            </select>
+            @Html.ValidationMessage(nameof(Model.Province))
+        </div>
+        <div class="form-group">
+            <label for="pwd">Địa chỉ:</label>
+            <input  class="form-control" name="@nameof(Model.Address)" value="@Model.Address">
+            @Html.ValidationMessage(nameof(Model.Address))
+        </div>
+        <div class="form-group">
+            <label for="pwd">Số điện thoại:</label>
+            <input class="form-control"  name="@nameof(Model.Phone)" value="@Model.Phone">
+            @Html.ValidationMessage(nameof(Model.Phone))
+        </div>
+        <div class="form-group">
+            <label for="pwd">Email:</label>
+            <input class="form-control" name="@nameof(Model.Email)" value="@Model.Email">
+            @Html.ValidationMessage(nameof(Model.Email))
+        </div>
+        <div class="text-right" style="margin-top: 50px;">
+            <button type="submit" class="btn btn-primary">Update Profile</button>
+            <a href="~/Account/ChangePassword" class="btn btn-default">ChangePassword</a>
+            <a href="~/Account/Logout" class="btn btn-danger">Logout</a>
+        </div>
+    </form>
+</div>
+<!-- Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
