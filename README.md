@@ -30,7 +30,7 @@ Visual Studio
 Installation
 Clone the repository:
 
-git clone https://github.com/nhuytran122/ASP.NetCore-ECommerce.git
+git clone [https://github.com/nhuytran122/ASP.NetCore-ECommerce.git](https://github.com/phanthoi1101/ASP.Netcore-ECommerce.git)
 Set up the database:
 
 Create a database named LiteCommerceDB and run the provided SQL script to set up the schema and sample data.
