@@ -31,7 +31,7 @@ This is an **E-Commerce Web Application** developed using **ASP.NET Core MVC**. 
 ### 📥 Installation
 1️⃣ **Clone the repository**:
 ```sh
- git clone https://github.com/nhuytran122/ASP.NetCore-ECommerce.git
+ https://github.com/phanthoi1101/ASP.Netcore-ECommerce.git
 ```
 2️⃣ **Set up the database**:
 - Create a database named `LiteCommerceDB`.
